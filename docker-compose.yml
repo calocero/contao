@@ -11,7 +11,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./contao:/var/www/html
+      - ./contao:/var/www/html/contao
 
   mariadb:
     image: mariadb:10.8
