@@ -16,6 +16,13 @@ $ sudo vim /etc/hosts
 ```
 The entry is: `127.0.0.1  contao.local`
 
+## File permissions on Linux
+If you are on Windows or macOS, you don't have to worry anything.
+If you are running Docker on a Linux distribution, then you will probably encounter some problems while spinning up the Docker Container.
+To adjust the permissions just run following command:
+```
+$ chown -R www-data:www-data contao
+```
 ## Docker Compose
 Make sure you have Docker and Docker Compose install on your system. To start the building process and run the environment, run this commands:
 

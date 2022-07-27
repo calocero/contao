@@ -1,6 +1,6 @@
 FROM php:7.4-apache
 
-ENV APACHE_DOCUMENT_ROOT /var/www/html/contao/public
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 WORKDIR /var/www/html
 
 RUN apt update && apt install -y \
@@ -24,6 +24,5 @@ RUN a2enmod rewrite && a2enmod ssl
 
 COPY ./ssl-certs /etc/apache2/ssl-certs
 COPY ./apache2/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
-COPY ./contao ./contao
+COPY contao ./
 RUN a2ensite default-ssl && service apache2 restart
-RUN chown -R www-data:www-data ./contao
