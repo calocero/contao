@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: php.dockerfile
-    image: contao:1.0
+    image: contao:latest
     container_name: contao
     ports:
       - 80:80
