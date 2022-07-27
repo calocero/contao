@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  contao:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    image: contao:1.0
+    container_name: contao
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./contao:/var/www/html
+
+  mariadb:
+    image: mariadb:10.8
+    container_name: mariadb
+    environment:
+      - MARIADB_RANDOM_ROOT_PASSWORD=yes
+      - MARIADB_DATABASE=contao
+      - MARIADB_USER=contao
+      - MARIADB_PASSWORD=secret
+    volumes:
+      - ./mariadb:/var/lib/mysql
+
+  adminer:
+    image: adminer:4.8.1
+    container_name: adminer
+    environment:
+      - ADMINER_DESIGN=dracula
+    ports:
+      - 8080:8080
